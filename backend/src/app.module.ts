@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
 import { User } from './modules/user/entities/user.entity';
+import { TestModuleModule } from './modules/test-module/test-module.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { User } from './modules/user/entities/user.entity';
       }),
       inject: [ConfigService],
     }),
+    TestModuleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
