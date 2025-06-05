@@ -1,0 +1,26 @@
+name: VargasBot
+on:
+  push:
+    branches:
+      - main
+      - release/*
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20.x']
+    steps:
+    - uses: actions/checkout@v1
+    - name: Using NodeJS 20
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build and test
+      run: |
+        cd backend
+        npm install
+        npm run test
